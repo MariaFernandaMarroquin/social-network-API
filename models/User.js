@@ -5,20 +5,29 @@ const emailValidation = require('mongoose-type-email');
 const User = model('user', userSchema);
 
 //Schema to create User model
-const userSchema = new Schema({
-    username: { type: String, unique: true, required: true, trim: true },
-    email: { type: mongoose.SchemaTypes.Email, unique: true, required: true },
-    thoughts: [
-        {
-            type: Schema.Types.ObjectId,
-            ref: 'thought',
-        }
-    ], 
-    friends: [
-        {
-
-        }
-    ]
-})
+const userSchema = new Schema(
+    {
+        username: { type: String, unique: true, required: true, trim: true },
+        email: { type: mongoose.SchemaTypes.Email, unique: true, required: true },
+        thoughts: [
+            {
+                type: Schema.Types.ObjectId,
+                ref: 'thought',
+            }
+        ],
+        friends: [
+            {
+                type: Schema.Types.ObjectId,
+                ref: 'user',
+            }
+        ]
+    },
+    {
+        toJSON: {
+            virtuals: true,
+        },
+        id: false,
+    }
+);
 
 module.exports = User
