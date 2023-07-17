@@ -16,6 +16,25 @@ const thoughtSchema = new Schema(
             }
         },
         username: { type: String, required: true },
-        reactions
+        reactions: [
+            {
+                tytpe: Schema.Types.ObjectId,
+                ref: 'reaction',
+            },
+        ],
+
+    },
+    {
+        toJSON: {
+            virtuals: true,
+        },
+        id: false,
     }
-)
+);
+
+//Create virtual property to retrieve the length of the thought's reactions. 
+thoughtSchema.virtual('reactionCount').get(function () {
+    return this.reactions.length;
+});
+
+module.exports = Thought;
