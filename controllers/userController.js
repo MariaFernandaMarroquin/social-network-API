@@ -66,7 +66,7 @@ module.exports = {
             res.status(500).json(err);
         }
     }, 
-    // POST for create a new user's friend by user id and friend id
+    // POST to create a new user's friend by user id and friend id
     // /api/users/:userId/friends/:friendId
     async createFriend(req, res) {
         try {
