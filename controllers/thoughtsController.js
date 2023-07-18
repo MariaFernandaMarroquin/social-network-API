@@ -63,7 +63,7 @@ module.exports = {
     },
     // DELETE a thought by its id
     // /api/thoughts/:thoughtId
-    async deleteUser(req, res) {
+    async deleteThought(req, res) {
         try {
             const thought = await Thought.findOneAndRemove({ _id: req.params.thoughtId });
 
@@ -95,7 +95,7 @@ module.exports = {
             res.json(500).json(err);
         }
     },
-    // DELETE a friend from user's list 
+    // DELETE a reaction from thoughts array
     // /api/thoughts/:thoughtId/reactions/:reactionId
     async removeReaction(req, res) {
         try {
