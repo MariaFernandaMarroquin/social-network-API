@@ -41,7 +41,7 @@ module.exports = {
                 return res.status(404).json({ message: 'No user found'});
             }
 
-            res.json(user);
+            res.json(thought);
         } catch (err) {
             res.status(500).json(err);
         }
@@ -50,7 +50,10 @@ module.exports = {
     // /api/thoughts/:thoughtId
     async updateThought(req, res) {
         try {
-            const thought = await Thought.findOneAndUpdate({ _id: req.params.thoughtId });
+            const thought = await Thought.findOneAndUpdate(
+                { _id: req.params.thoughtId },
+                { $set: req.body }
+                );
 
             if (!thought) {
                 return res.status(404).json({ message: 'No thought found' });
@@ -101,7 +104,7 @@ module.exports = {
         try {
             const thought = await Thought.findOneAndUpdate(
                 { _id: req.params.thoughtId },
-                { $pull: { reactions: { reactionId: req.params.reactionId } } },
+                { $pull: { reactions: req.params.reactionId } },
                 { runValidators: true, new: true }
             );
 
@@ -109,7 +112,7 @@ module.exports = {
                 return res.status(404).json({ message: 'No thought found ' });
             }
 
-            res.json(thought);
+            res.json({ message: "Reaction deleted successfully" });
         } catch (err) {
             res.status(500).json(err);
         }
