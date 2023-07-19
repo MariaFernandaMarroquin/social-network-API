@@ -22,6 +22,9 @@ The following video shows the functionality of various routes of the API.
 
 [![Demo video of all requests tested in Insomnia](./Assets/video_mockup.png)](https://drive.google.com/file/d/15XSEJ-tBe6WqMrZGYqokYCoEBHVeLuj7/view?usp=sharing)
 
+## GitHub Repository
+
+Repo: https://github.com/MariaFernandaMarroquin/social-network-API
 
 ---
 © 2023 edX Boot Camps LLC. Confidential and Proprietary. All Rights Reserved. Developed by María Fernanda Marroquín. 
